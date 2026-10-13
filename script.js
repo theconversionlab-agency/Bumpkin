@@ -1,7 +1,8 @@
 // ============ EDIT YOUR CONTENT HERE ============
-// Pinned showcase: one entry per feature. `screen` picks an HTML screen from
-// app-screens.js; or set `image: "assets/screens/1.png"` to use a screenshot.
-const FEATURES = [
+// Each audience mode (nav toggle) has its own hero copy, hero screen and
+// pinned-showcase features. `screen` picks an HTML screen from app-screens.js;
+// or set `image: "assets/screens/1.png"` to use a real screenshot instead.
+const INDIVIDUAL_FEATURES = [
   {
     eyebrow: "Your network",
     title: "Everyone you've met,<br>in one place",
@@ -39,6 +40,52 @@ const FEATURES = [
   },
 ];
 
+const EVENT_FEATURES = [
+  {
+    eyebrow: "Create",
+    title: "Set up an event<br>in a minute",
+    body: "Name it, pick a date and venue, and Bumpkin gives you a QR code and short join code for the door.",
+    color: "#f2a07b",
+    screen: "events",
+  },
+  {
+    eyebrow: "Check-in",
+    title: "One scan at<br>the door",
+    body: "Guests scan the event QR or type the code. No forms and no lanyards to print. They're in, and their card is shared.",
+    color: "#3ecf7a",
+    screen: "eventLive",
+  },
+  {
+    eyebrow: "Live guest list",
+    title: "Know who's<br>in the room",
+    body: "Watch guests arrive in real time and filter by role or company, so you can make the right introductions.",
+    color: "#5aa9ff",
+    screen: "guests",
+  },
+  {
+    eyebrow: "Recap",
+    title: "Proof your event<br>worked",
+    body: "See how many connections your guests made and who came, then follow up with everyone in one tap.",
+    color: "#e8c06a",
+    screen: "recap",
+  },
+];
+
+const MODES = {
+  individuals: {
+    title: "Remember everyone you meet",
+    sub: "Share your card with a scan. Bumpkin keeps every connection organised by where you met, what they do, and when.",
+    heroScreen: "card",
+    features: INDIVIDUAL_FEATURES,
+  },
+  events: {
+    title: "Events where everyone connects",
+    sub: "Guests check in with one scan, share their cards automatically, and leave with a list of everyone they met.",
+    heroScreen: "eventLive",
+    features: EVENT_FEATURES,
+  },
+};
+
 // Dummy reviews — replace with real ones.
 const REVIEWS = [
   ["I came home from a conference with 30 contacts and actually remembered who everyone was.", "Riya M. · Sep 2026"],
@@ -56,38 +103,76 @@ const screensEl = document.getElementById("showcaseScreens");
 const dotsEl = document.getElementById("showcaseDots");
 const glow = showcase.querySelector(".glow");
 
-FEATURES.forEach((f, i) => {
-  copyEl.insertAdjacentHTML("beforeend",
-    `<div class="feature-copy"><p class="eyebrow">${f.eyebrow}</p><h2>${f.title}</h2><p>${f.body}</p></div>`);
-  screensEl.insertAdjacentHTML("beforeend",
-    `<div class="screen">${f.image ? `<img src="${f.image}" alt="">` : SCREENS[f.screen]}</div>`);
-  const dot = document.createElement("button");
-  dot.setAttribute("aria-label", `Go to feature ${i + 1}`);
-  dot.addEventListener("click", () => {
-    const top = showcase.offsetTop + i * window.innerHeight + 1;
-    window.scrollTo({ top, behavior: "smooth" });
-  });
-  dotsEl.appendChild(dot);
-});
-
-// One viewport of scroll per feature, plus the pinned viewport itself.
-showcase.style.height = `${FEATURES.length * 100}vh`;
-
+let features = [];
 let current = -1;
+
+function buildShowcase(list) {
+  features = list;
+  current = -1;
+  copyEl.innerHTML = screensEl.innerHTML = dotsEl.innerHTML = "";
+  list.forEach((f, i) => {
+    copyEl.insertAdjacentHTML("beforeend",
+      `<div class="feature-copy"><p class="eyebrow">${f.eyebrow}</p><h2>${f.title}</h2><p>${f.body}</p></div>`);
+    screensEl.insertAdjacentHTML("beforeend",
+      `<div class="screen">${f.image ? `<img src="${f.image}" alt="">` : SCREENS[f.screen]}</div>`);
+    const dot = document.createElement("button");
+    dot.setAttribute("aria-label", `Go to feature ${i + 1}`);
+    dot.addEventListener("click", () => {
+      const top = showcase.offsetTop + i * window.innerHeight + 1;
+      window.scrollTo({ top, behavior: "smooth" });
+    });
+    dotsEl.appendChild(dot);
+  });
+  // One viewport of scroll per feature, plus the pinned viewport itself.
+  showcase.style.height = `${list.length * 100}vh`;
+}
+
 function setActive(i) {
   if (i === current) return;
   current = i;
   [copyEl.children, screensEl.children, dotsEl.children].forEach((list) =>
     [...list].forEach((el, j) => el.classList.toggle("active", j === i)));
-  glow.style.background = `radial-gradient(circle, ${FEATURES[i].color}55, transparent 65%)`;
+  glow.style.background = `radial-gradient(circle, ${features[i].color}55, transparent 65%)`;
 }
 
 function onScroll() {
   const scrolled = window.scrollY - showcase.offsetTop;
   const step = Math.floor(scrolled / window.innerHeight);
-  setActive(Math.min(FEATURES.length - 1, Math.max(0, step)));
+  setActive(Math.min(features.length - 1, Math.max(0, step)));
   document.querySelector(".nav").classList.toggle("scrolled", window.scrollY > 40);
 }
+
+// ============ Audience toggle (For Individuals / For Events) ============
+const heroTitle = document.getElementById("heroTitle");
+const heroSub = document.getElementById("heroSub");
+const heroScreen = document.getElementById("heroScreen");
+
+function setMode(name) {
+  const mode = MODES[name];
+  document.querySelectorAll(".seg").forEach((b) => {
+    const on = b.dataset.mode === name;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-selected", on);
+  });
+  document.body.dataset.mode = name;
+  heroTitle.textContent = mode.title;
+  heroSub.textContent = mode.sub;
+  heroScreen.innerHTML = `<div class="screen active">${SCREENS[mode.heroScreen]}</div>`;
+  buildShowcase(mode.features);
+  fitScreens();
+  onScroll();
+}
+
+document.querySelectorAll(".seg").forEach((b) => b.addEventListener("click", () => {
+  setMode(b.dataset.mode);
+  // If the visitor is already past the hero, bring them back to the top of the new story.
+  if (window.scrollY > showcase.offsetTop) window.scrollTo({ top: showcase.offsetTop, behavior: "smooth" });
+}));
+document.querySelectorAll("[data-mode-link]").forEach((a) => a.addEventListener("click", (e) => {
+  e.preventDefault();
+  setMode(a.dataset.modeLink);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}));
 
 // ============ Reviews marquee ============
 const reviewHTML = REVIEWS.map(([text, who]) => `<div class="review"><p>${text}</p><small>${who}</small></div>`).join("");
@@ -111,13 +196,8 @@ new IntersectionObserver(([entry], obs) => {
 }, { threshold: 0.5 }).observe(counter);
 
 // ============ Misc ============
-document.querySelectorAll(".seg").forEach((b) => b.addEventListener("click", () => {
-  document.querySelectorAll(".seg").forEach((x) => x.classList.toggle("active", x === b));
-}));
 document.getElementById("year").textContent = new Date().getFullYear();
 
 window.addEventListener("scroll", onScroll, { passive: true });
-document.getElementById("heroScreen").innerHTML = `<div class="screen active">${SCREENS.card}</div>`;
 window.addEventListener("resize", () => { onScroll(); fitScreens(); });
-fitScreens();
-onScroll();
+setMode(new URLSearchParams(location.search).get("for") === "events" ? "events" : "individuals");

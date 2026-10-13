@@ -169,6 +169,62 @@ const SCREENS = {
       ${[["Startup Mixer", "Attended · Oct 1"], ["Design Week", "Hosting · completed Sep 29"], ["City Business Meet", "Attended · Sep 14"]].map(evRow).join("")}
       ${tabbar("Events")}
     </div>`,
+
+  eventLive: `
+    <div class="app">
+      <div class="a-row a-pad a-top" style="justify-content:space-between">
+        <span class="a-circle">${icon("back")}</span><span class="a-tag live">● Live</span>
+      </div>
+      <div class="a-pad" style="margin-top:16px"><div class="a-serif" style="font-size:34px">Founders Breakfast</div>
+        <div class="a-muted">Sat, Oct 18 · The Grand Hall, Mumbai</div></div>
+      <div class="a-box" style="margin:18px 18px 0;text-align:center;padding:18px">
+        <div class="a-muted" style="font-weight:600">Guests scan to join</div>
+        <div class="a-qr" style="width:170px"><img src="assets/qr-card.svg" alt=""></div>
+        <div class="a-muted" style="font-size:12px">or enter code</div>
+        <div class="a-code">FB24</div>
+      </div>
+      <div class="a-row" style="gap:10px;margin:14px 18px 0">
+        <div class="a-box a-stat"><span class="a-serif">42</span><small class="a-muted">joined</small></div>
+        <div class="a-box a-stat"><span class="a-serif">118</span><small class="a-muted">connections</small></div>
+      </div>
+      <div class="a-btn-light" style="margin:14px 18px 0">${icon("share", 18)} Share event link</div>
+    </div>`,
+
+  guests: `
+    <div class="app">
+      <div class="a-row a-pad a-top" style="justify-content:space-between">
+        <span class="a-serif" style="font-size:34px">Guests</span><span class="a-count">42</span>
+      </div>
+      <div class="a-search">${icon("search", 18)} Search guests, company, role…</div>
+      <div class="a-row" style="gap:8px;padding:14px 18px 0">
+        <span class="a-chip green">All</span><span class="a-chip">Founders</span><span class="a-chip">Investors</span><span class="a-chip">Design</span>
+      </div>
+      <div class="a-list">
+        ${[["RM", "blue", "Riya Mehta", "Founder · Loopwise", "just now"], ["VJ", "bronze", "Vikram Joshi", "Investor · Seed fund", "1m"],
+           ["PS", "rust", "Priya Sen", "Product Lead · Fintech", "3m"], ["TN", "plum", "Tara Nair", "Designer · Studio Nine", "6m"],
+           ["KS", "purple", "Kabir Shah", "Founder · Hatch Labs", "9m"]]
+          .map(([i, t, n, r, ago]) => `<div class="a-row a-item" style="justify-content:space-between"><span class="a-row" style="gap:14px">${av(i, t, 44)}<span><b>${n}</b><br><span class="a-muted">${r}</span></span></span><small class="a-green">${ago}</small></div>`).join("")}
+      </div>
+    </div>`,
+
+  recap: `
+    <div class="app">
+      <div class="a-row a-pad a-top" style="gap:12px"><span class="a-circle">${icon("back")}</span><span class="a-muted">Event recap</span></div>
+      <div class="a-box" style="margin:16px 18px 0;padding:18px">
+        <div class="a-serif" style="font-size:52px;line-height:1">42 guests</div>
+        <div class="a-muted">made 118 connections at Founders Breakfast</div>
+      </div>
+      <div class="a-row" style="gap:10px;margin:12px 18px 0">
+        <div class="a-box a-stat"><span class="a-serif">2.8</span><small class="a-muted">avg. per guest</small></div>
+        <div class="a-box a-stat"><span class="a-serif">91%</span><small class="a-muted">shared a card</small></div>
+      </div>
+      <b class="a-pad" style="display:block;margin-top:20px">Who came</b>
+      <div class="a-bars a-pad">
+        ${[["Founders", 46], ["Investors", 24], ["Design", 18], ["Other", 12]]
+          .map(([l, v]) => `<div><span>${l}</span><i style="--w:${v}%"></i><small class="a-muted">${v}%</small></div>`).join("")}
+      </div>
+      <div class="a-btn-light" style="margin:18px 18px 0">${icon("users", 18)} Message all guests</div>
+    </div>`,
 };
 
 function evRow([t, s]) {

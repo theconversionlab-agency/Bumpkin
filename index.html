@@ -17,9 +17,9 @@
   <header class="nav">
     <a href="#" class="brand"><img src="assets/logo.svg" alt="" width="30" height="30" /> Bumpkin</a>
     <div class="nav-right">
-      <div class="segmented" role="tablist">
-        <button class="seg active">For Individuals</button>
-        <button class="seg">For Events</button>
+      <div class="segmented" role="tablist" aria-label="Audience">
+        <button class="seg active" data-mode="individuals" role="tab" aria-selected="true">For Individuals</button>
+        <button class="seg" data-mode="events" role="tab" aria-selected="false">For Events</button>
       </div>
       <a href="#download" class="btn btn-primary">Download App</a>
     </div>
@@ -29,19 +29,25 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <h1>Remember everyone you meet</h1>
-      <p class="hero-sub">Share your card with a scan. Bumpkin keeps every connection<br />organised by where you met, what they do, and when.</p>
+      <div class="hero-copy">
+        <a href="https://www.producthunt.com/products/bumpkin" class="ph-badge" target="_blank" rel="noopener">
+          <span class="ph-logo">P</span>
+          <span><small>Featured on</small>Product Hunt</span>
+          <span class="ph-votes">▲ 512</span>
+        </a>
+        <h1 id="heroTitle">Remember everyone you meet</h1>
+        <p class="hero-sub" id="heroSub">Share your card with a scan. Bumpkin keeps every connection organised by where you met, what they do, and when.</p>
+        <div class="stores">
+          <a href="https://apps.apple.com/app/id0000000000" class="store-badge"><span class="store-icon"></span><span><small>Download on the</small>App Store</span></a>
+          <a href="https://play.google.com/store/apps/details?id=app.bumpkin" class="store-badge"><span class="store-icon play"></span><span><small>Get it on</small>Google Play</span></a>
+        </div>
+      </div>
 
       <div class="phone phone-hero">
         <div class="phone-screen" id="heroScreen"></div>
-        <div class="scroll-hint">Scroll to explore<span>↓</span></div>
-      </div>
-
-      <div class="stores">
-        <a href="https://apps.apple.com/app/id0000000000" class="store-badge"><span class="store-icon"></span><span><small>Download on the</small>App Store</span></a>
-        <a href="https://play.google.com/store/apps/details?id=app.bumpkin" class="store-badge"><span class="store-icon play"></span><span><small>Get it on</small>Google Play</span></a>
       </div>
     </div>
+    <a href="#showcase" class="scroll-hint">Scroll to explore<span>↓</span></a>
   </section>
 
   <!-- ============ LOGO MARQUEE (dummy names) ============ -->
@@ -162,7 +168,7 @@
     <footer class="footer">
       <div class="footer-cols">
         <a href="#" class="brand"><img src="assets/logo.svg" alt="" width="28" height="28" /> Bumpkin</a>
-        <ul><li><a href="https://apps.apple.com/app/id0000000000">Bumpkin for iOS</a></li><li><a href="https://play.google.com/store/apps/details?id=app.bumpkin">Bumpkin for Android</a></li><li><a href="#">Bumpkin for Events</a></li></ul>
+        <ul><li><a href="https://apps.apple.com/app/id0000000000">Bumpkin for iOS</a></li><li><a href="https://play.google.com/store/apps/details?id=app.bumpkin">Bumpkin for Android</a></li><li><a href="#" data-mode-link="events">Bumpkin for Events</a></li></ul>
         <ul><li><a href="#">Support</a></li><li><a href="#">FAQ</a></li><li><a href="#">Blog</a></li></ul>
         <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="mailto:hello@bumpkin.app">Contact</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li></ul>
         <div class="socials">
