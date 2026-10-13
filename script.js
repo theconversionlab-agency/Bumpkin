@@ -1,51 +1,52 @@
 // ============ EDIT YOUR CONTENT HERE ============
-// Pinned showcase: one entry per feature. Add `image: "assets/screens/1.png"`
-// to show a real app screenshot inside the phone instead of the placeholder.
+// Pinned showcase: one entry per feature. `screen` picks an HTML screen from
+// app-screens.js; or set `image: "assets/screens/1.png"` to use a screenshot.
 const FEATURES = [
   {
-    eyebrow: "Step one",
-    title: "See where you<br>are today",
-    body: "Explain your first key feature in one or two short sentences.",
-    color: "#4f7bff",
-    placeholder: `<p class="ph-label">Your level</p><p class="ph-title">Intermediate <em>B2</em></p><div class="ph-ring"></div>`,
+    eyebrow: "Your network",
+    title: "Everyone you've met,<br>in one place",
+    body: "Bumpkin is your directory of people, not just phone numbers. Search by name, event, city or profession and find them in seconds.",
+    color: "#3ecf7a",
+    screen: "directory",
   },
   {
-    eyebrow: "Step two",
-    title: "Get a plan<br>made for you",
-    body: "Explain how your app adapts to each person.",
-    color: "#a35bff",
-    placeholder: `<p class="ph-label">Your plan</p><p class="ph-title">This week</p><div class="ph-bars"><i style="--w:80%"></i><i style="--w:55%"></i><i style="--w:35%"></i><i style="--w:65%"></i></div>`,
+    eyebrow: "Nearby",
+    title: "See who's in<br>the room",
+    body: "Switch on Nearby at an event and see who else is sharing. Connect with one tap instead of hunting for a pen.",
+    color: "#5aa9ff",
+    screen: "nearby",
   },
   {
-    eyebrow: "Step three",
-    title: "Practice in<br>real moments",
-    body: "Describe the core interaction people have with your app.",
-    color: "#2ee87a",
-    placeholder: `<p class="ph-label">Live session</p><div class="ph-bubbles"><span>Hi! What would you like to work on?</span><span>Something for tomorrow.</span><span>Great, let's start.</span></div>`,
+    eyebrow: "Contacts",
+    title: "Context on<br>every contact",
+    body: "Every contact keeps their role, company and city, plus where you met. Find the right person even when you've forgotten their name.",
+    color: "#c9a7f5",
+    screen: "contacts",
   },
   {
-    eyebrow: "Step four",
-    title: "Instant, clear<br>feedback",
-    body: "Show what users get back after each session.",
-    color: "#ff9f43",
-    placeholder: `<p class="ph-label">Session score</p><p class="ph-title">86 / 100</p><div class="ph-ring"></div>`,
+    eyebrow: "Rewind",
+    title: "Your month in<br>people",
+    body: "A monthly recap of who you met and where. A quick way to see who you still owe a follow-up.",
+    color: "#e8c06a",
+    screen: "rewind",
   },
   {
-    eyebrow: "Step five",
-    title: "Watch your<br>progress grow",
-    body: "Close the story with streaks, stats, or milestones.",
-    color: "#ff5c8a",
-    placeholder: `<p class="ph-label">Progress</p><p class="ph-title">12-day streak</p><div class="ph-bars"><i style="--w:30%"></i><i style="--w:50%"></i><i style="--w:70%"></i><i style="--w:90%"></i></div>`,
+    eyebrow: "Events",
+    title: "Host it, and<br>everyone connects",
+    body: "Create an event, and guests join by scanning the event QR or typing a short code. The whole guest list lands in a collection automatically.",
+    color: "#f2a07b",
+    screen: "events",
   },
 ];
 
+// Dummy reviews — replace with real ones.
 const REVIEWS = [
-  ["Replace with a real user review. Short and specific works best.", "Name · Month 2026"],
-  ["Another review talking about a feature people love.", "Name · Month 2026"],
-  ["A review about how quickly they saw results.", "Name · Month 2026"],
-  ["A review about how easy it is to get started.", "Name · Month 2026"],
-  ["A review that mentions a specific use case.", "Name · Month 2026"],
-  ["A review comparing it favourably to alternatives.", "Name · Month 2026"],
+  ["I came home from a conference with 30 contacts and actually remembered who everyone was.", "Riya M. · Sep 2026"],
+  ["Sharing my card by QR is so smooth. People don't even need the app to scan it.", "Kabir S. · Sep 2026"],
+  ["Rewind is my favourite part. I go through it every month and send follow-ups.", "Ananya N. · Aug 2026"],
+  ["We used Events for our business meet and everyone was connected before lunch.", "Dev V. · Aug 2026"],
+  ["Finally stopped losing paper cards. Collections keep my clients and leads separate.", "Sana G. · Jul 2026"],
+  ["Nearby is like magic at meetups. I just see who's around and say hi.", "Vikram J. · Jul 2026"],
 ];
 
 // ============ Pinned showcase ============
@@ -59,7 +60,7 @@ FEATURES.forEach((f, i) => {
   copyEl.insertAdjacentHTML("beforeend",
     `<div class="feature-copy"><p class="eyebrow">${f.eyebrow}</p><h2>${f.title}</h2><p>${f.body}</p></div>`);
   screensEl.insertAdjacentHTML("beforeend",
-    `<div class="screen" style="--c:${f.color}">${f.image ? `<img src="${f.image}" alt="">` : f.placeholder}</div>`);
+    `<div class="screen">${f.image ? `<img src="${f.image}" alt="">` : SCREENS[f.screen]}</div>`);
   const dot = document.createElement("button");
   dot.setAttribute("aria-label", `Go to feature ${i + 1}`);
   dot.addEventListener("click", () => {
@@ -116,5 +117,7 @@ document.querySelectorAll(".seg").forEach((b) => b.addEventListener("click", () 
 document.getElementById("year").textContent = new Date().getFullYear();
 
 window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", onScroll);
+document.getElementById("heroScreen").innerHTML = `<div class="screen active">${SCREENS.card}</div>`;
+window.addEventListener("resize", () => { onScroll(); fitScreens(); });
+fitScreens();
 onScroll();
