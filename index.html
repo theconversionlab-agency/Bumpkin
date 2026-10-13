@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bumpkin — Your app, in your pocket</title>
+  <meta name="description" content="Replace with your app's one-line pitch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#" class="brand"><span class="brand-mark">»</span> Bumpkin</a>
+    <div class="nav-right">
+      <div class="segmented" role="tablist">
+        <button class="seg active">For Individuals</button>
+        <button class="seg">For Teams</button>
+      </div>
+      <a href="#download" class="btn btn-primary">Download App</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <!-- Replace the gradient with your photo: .hero-bg { background-image: url(assets/hero.jpg) } -->
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Your big promise, said simply</h1>
+      <p class="hero-sub">One sentence on what your app does for people.<br />Short, specific, no jargon.</p>
+
+      <div class="phone phone-hero">
+        <div class="phone-screen">
+          <div class="screen hero-screen">
+            <div class="call-bar"><span class="avatar-sm"></span><span>Talk with your assistant<br /><small>00:24</small></span></div>
+            <div class="orb"></div>
+            <div class="scroll-hint">Scroll to explore<span>↓</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stores">
+        <a href="#" class="store-badge"><span class="store-icon"></span><span><small>Download on the</small>App Store</span></a>
+        <a href="#" class="store-badge"><span class="store-icon play"></span><span><small>Get it on</small>Google Play</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGO MARQUEE ============ -->
+  <section class="logos" aria-label="As featured in">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Publication One</span><span>Accelerator</span><span>Tech Weekly</span><span>Business Daily</span><span>Startup News</span>
+        <span>Publication One</span><span>Accelerator</span><span>Tech Weekly</span><span>Business Daily</span><span>Startup News</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PINNED FEATURE SHOWCASE ============
+       The section is tall (one viewport per feature). Its inner .pin-stage is
+       position: sticky, so the page appears to stop while script.js swaps the
+       active feature based on scroll progress. Edit features in script.js. -->
+  <section class="showcase" id="showcase">
+    <div class="pin-stage">
+      <div class="showcase-grid">
+        <div class="showcase-copy" id="showcaseCopy"></div>
+
+        <div class="showcase-phone">
+          <div class="glow"></div>
+          <div class="phone phone-lg">
+            <div class="phone-status"><span>9:41</span><span>●●● ▮</span></div>
+            <div class="phone-screen" id="showcaseScreens"></div>
+          </div>
+        </div>
+      </div>
+      <nav class="dots" id="showcaseDots" aria-label="Feature progress"></nav>
+    </div>
+  </section>
+
+  <!-- ============ BENTO GRID ============ -->
+  <section class="bento-section">
+    <p class="eyebrow">Keep going</p>
+    <h2 class="section-title">More ways to use it,<br />every single day</h2>
+
+    <div class="bento">
+      <article class="card card-light card-tall">
+        <p class="eyebrow blue">Mode one</p>
+        <h3>A playful way in.<br />Try, score, repeat.</h3>
+        <div class="card-visual sky">
+          <div class="float a"></div><div class="float b"></div>
+          <span class="pill-live"><i></i>Listening…</span>
+        </div>
+      </article>
+
+      <article class="card card-blue">
+        <div class="mini-card">
+          <small>Program</small>
+          <strong>Starter Track</strong>
+          <div class="tags"><span>10 modules</span><span>3 hours</span></div>
+          <p>A short description of a guided program inside your app.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Programs</p>
+          <h3>Guided paths for clear goals</h3>
+        </div>
+      </article>
+
+      <article class="card card-dark">
+        <div>
+          <p class="eyebrow green">Custom</p>
+          <h3>Any situation.<br />Set up your way.</h3>
+        </div>
+        <div class="chip-grid">
+          <span>Option A</span><span>Option B</span><span>Option C</span>
+          <span>Option D</span><span>Option E</span><span>+ Suggest</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL PROOF ============ -->
+  <section class="proof">
+    <p class="eyebrow blue">People trust Bumpkin</p>
+    <div class="big-number" data-count="100000">0</div>
+    <div class="ratings">
+      <div><strong>4.8 ★</strong> App Store</div>
+      <span class="divider"></span>
+      <div><strong>4.7 ★</strong> Reviews</div>
+    </div>
+
+    <div class="reviews">
+      <div class="review-row" id="reviewRow1"></div>
+      <div class="review-row reverse" id="reviewRow2"></div>
+    </div>
+  </section>
+
+  <!-- ============ OUTCOMES ============ -->
+  <section class="outcomes-wrap">
+    <div class="outcomes">
+      <p class="eyebrow green">Built for results</p>
+      <h2 class="section-title">With Bumpkin<br />you can finally</h2>
+
+      <div class="outcome-scroller">
+        <article class="outcome o1"><h3>Outcome number one</h3>
+          <div class="overlay-ui"><small>What's next</small><strong>Next step</strong><span>Short detail</span></div></article>
+        <article class="outcome o2"><h3>Outcome number two</h3>
+          <div class="overlay-ui streak"><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>5</span><span>6</span><span>7</span></div></article>
+        <article class="outcome o3"><h3>Outcome number three</h3>
+          <div class="overlay-ui"><small>Start with this</small><strong>A quick win…</strong></div></article>
+        <article class="outcome o4"><h3>Outcome number four</h3>
+          <div class="overlay-ui"><small>Today</small><strong>10 minutes</strong></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA + FOOTER ============ -->
+  <section class="final" id="download">
+    <div class="final-bg"></div>
+    <div class="final-content">
+      <h2>From thinking about it<br />to actually doing it</h2>
+      <div class="qr" aria-label="QR code placeholder"></div>
+      <div class="stores">
+        <a href="#" class="store-badge"><span class="store-icon"></span><span><small>Download on the</small>App Store</span></a>
+        <a href="#" class="store-badge"><span class="store-icon play"></span><span><small>Get it on</small>Google Play</span></a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-cols">
+        <a href="#" class="brand"><span class="brand-mark">»</span> Bumpkin</a>
+        <ul><li><a href="#">iOS app</a></li><li><a href="#">Android app</a></li><li><a href="#">For teams</a></li></ul>
+        <ul><li><a href="#">Support</a></li><li><a href="#">FAQ</a></li><li><a href="#">Blog</a></li></ul>
+        <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li></ul>
+        <div class="socials"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">X</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Bumpkin.</span><span>All rights reserved.</span>
+      </div>
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
