@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bumpkin: Remember everyone you meet</title>
+  <meta name="description" content="Share your business card with one scan, and keep everyone you meet organised by event, city and profession." />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#" class="brand"><img src="assets/logo.svg" alt="" width="30" height="30" /> Bumpkin</a>
+    <div class="nav-right">
+      <div class="segmented" role="tablist" aria-label="Audience">
+        <button class="seg active" data-mode="individuals" role="tab" aria-selected="true">For Individuals</button>
+        <button class="seg" data-mode="events" role="tab" aria-selected="false">For Events</button>
+      </div>
+      <a href="#download" class="btn btn-primary">Download App</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-copy">
+        <a href="https://www.producthunt.com/products/bumpkin" class="ph-badge" target="_blank" rel="noopener">
+          <span class="ph-logo">P</span>
+          <span><small>Featured on</small>Product Hunt</span>
+          <span class="ph-votes">▲ 512</span>
+        </a>
+        <h1 id="heroTitle">Remember everyone you meet</h1>
+        <p class="hero-sub" id="heroSub">Share your card with a scan. Bumpkin keeps every connection organised by where you met, what they do, and when.</p>
+        <div class="stores">
+          <a href="https://apps.apple.com/app/id0000000000" class="store-badge"><span class="store-icon"></span><span><small>Download on the</small>App Store</span></a>
+          <a href="https://play.google.com/store/apps/details?id=app.bumpkin" class="store-badge"><span class="store-icon play"></span><span><small>Get it on</small>Google Play</span></a>
+        </div>
+      </div>
+
+      <div class="phone phone-hero">
+        <div class="phone-screen" id="heroScreen"></div>
+      </div>
+    </div>
+    <a href="#showcase" class="scroll-hint">Scroll to explore<span>↓</span></a>
+  </section>
+
+  <!-- ============ LOGO MARQUEE (dummy names) ============ -->
+  <section class="logos" aria-label="As featured in">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>The Daily Startup</span><span>Founders Weekly</span><span>Launch Daily</span><span>Mint Ventures</span><span>Tech Bazaar</span>
+        <span>The Daily Startup</span><span>Founders Weekly</span><span>Launch Daily</span><span>Mint Ventures</span><span>Tech Bazaar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PINNED FEATURE SHOWCASE ============
+       Page holds while script.js swaps phone screen + copy per feature. -->
+  <section class="showcase" id="showcase">
+    <div class="pin-stage">
+      <div class="showcase-grid">
+        <div class="showcase-copy" id="showcaseCopy"></div>
+        <div class="showcase-phone">
+          <div class="glow"></div>
+          <div class="phone phone-lg">
+            <div class="phone-screen" id="showcaseScreens"></div>
+          </div>
+        </div>
+      </div>
+      <nav class="dots" id="showcaseDots" aria-label="Feature progress"></nav>
+    </div>
+  </section>
+
+  <!-- ============ BENTO GRID ============ -->
+  <section class="bento-section">
+    <p class="eyebrow">Wherever you meet people</p>
+    <h2 class="section-title">Networking that<br />actually sticks</h2>
+
+    <div class="bento">
+      <article class="card card-light card-tall">
+        <p class="eyebrow blue">Scan</p>
+        <h3>One scan. Saved forever.<br />No paper cards.</h3>
+        <div class="card-visual scan-visual">
+          <div class="mini-qr"><img src="assets/qr-card.svg" alt="" /></div>
+          <div class="scan-line"></div>
+          <span class="pill-live"><i></i>Card received</span>
+        </div>
+      </article>
+
+      <article class="card card-green">
+        <div class="mini-card">
+          <small>Event</small>
+          <strong>Founders Breakfast</strong>
+          <div class="tags"><span>42 joined</span><span>Code: FB24</span></div>
+          <p>Guests scan once at the door and everyone's in one list.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Events</p>
+          <h3>Host it, and everyone connects</h3>
+        </div>
+      </article>
+
+      <article class="card card-dark">
+        <div>
+          <p class="eyebrow green">Collections</p>
+          <h3>Sorted the way<br />you think.</h3>
+        </div>
+        <div class="chip-grid">
+          <span>🤝 Meetups</span><span>💼 Clients</span><span>🎨 Design</span>
+          <span>🚀 Founders</span><span>🩺 Doctors</span><span>📍 Nearby</span><span>+ New</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL PROOF (dummy numbers) ============ -->
+  <section class="proof">
+    <p class="eyebrow blue">Networkers trust Bumpkin</p>
+    <div class="big-number" data-count="50000">0</div>
+    <div class="ratings">
+      <div><strong>4.8 ★</strong> iOS &amp; Android</div>
+      <span class="divider"></span>
+      <div><strong>4.7 ★</strong> 2k+ reviews</div>
+    </div>
+    <div class="reviews">
+      <div class="review-row" id="reviewRow1"></div>
+      <div class="review-row reverse" id="reviewRow2"></div>
+    </div>
+  </section>
+
+  <!-- ============ OUTCOMES ============ -->
+  <section class="outcomes-wrap">
+    <div class="outcomes">
+      <p class="eyebrow green">Built for follow-through</p>
+      <h2 class="section-title">With Bumpkin<br />you can finally</h2>
+
+      <div class="outcome-scroller">
+        <article class="outcome o1"><h3>Walk into any event already prepared</h3>
+          <div class="overlay-ui"><small>Nearby now</small><strong>23 people sharing</strong><span>Startup Mixer · Mumbai</span></div></article>
+        <article class="outcome o2"><h3>Put a name to every face</h3>
+          <div class="overlay-ui avatars"><span>RM</span><span>PS</span><span>KS</span><span>VJ</span><span>+20</span></div></article>
+        <article class="outcome o3"><h3>Follow up while it's still warm</h3>
+          <div class="overlay-ui"><small>Met yesterday</small><strong>Priya Sen · Product Lead</strong></div></article>
+        <article class="outcome o4"><h3>Look back on a month of meetings</h3>
+          <div class="overlay-ui"><small>Rewind · September</small><strong>24 people · 6 events</strong></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA + FOOTER ============ -->
+  <section class="final" id="download">
+    <div class="final-bg"></div>
+    <div class="final-content">
+      <h2>From a pocket full of cards<br />to a network that works</h2>
+      <div class="qr"><img src="assets/qr-download.svg" alt="Scan to download Bumpkin" /></div>
+      <div class="stores">
+        <a href="https://apps.apple.com/app/id0000000000" class="store-badge"><span class="store-icon"></span><span><small>Download on the</small>App Store</span></a>
+        <a href="https://play.google.com/store/apps/details?id=app.bumpkin" class="store-badge"><span class="store-icon play"></span><span><small>Get it on</small>Google Play</span></a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-cols">
+        <a href="#" class="brand"><img src="assets/logo.svg" alt="" width="28" height="28" /> Bumpkin</a>
+        <ul><li><a href="https://apps.apple.com/app/id0000000000">Bumpkin for iOS</a></li><li><a href="https://play.google.com/store/apps/details?id=app.bumpkin">Bumpkin for Android</a></li><li><a href="#" data-mode-link="events">Bumpkin for Events</a></li></ul>
+        <ul><li><a href="#">Support</a></li><li><a href="#">FAQ</a></li><li><a href="#">Blog</a></li></ul>
+        <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="mailto:hello@bumpkin.app">Contact</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li></ul>
+        <div class="socials">
+          <a href="https://instagram.com/bumpkin.app" aria-label="Instagram">IG</a>
+          <a href="https://linkedin.com/company/bumpkin" aria-label="LinkedIn">in</a>
+          <a href="https://x.com/bumpkinapp" aria-label="X">X</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Bumpkin.</span><span>All rights reserved.</span>
+      </div>
+    </footer>
+  </section>
+
+  <script src="app-screens.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
